@@ -4,39 +4,39 @@ class usuario:
         self.usuario= usuario 
         self.correo= correo
         
-        #clase mensaje
-        class mensaje:
-            def __init__(self, mensaje, remitente, destinatario, asunto):
+#clase mensaje
+class mensaje:
+    def __init__(self, mensaje, remitente, destinatario, asunto):
                 self.mensaje= mensaje
                 self.remitente= remitente
                 self.destinatario= destinatario
                 self.asunto= asunto
                 
                 
-                def __str__(self):
-                    return f"{self.asunto} (de: {self.remitente})"
+    def __str__(self):
+            return f"{self.asunto} (de: {self.remitente})"
                 
-                #clase carpeta
-                class carpeta:
-                    def __init__(self, usuario):
-                        self.usuario= usuario
-                        self.mensajes= ()
+#clase carpeta
+class carpeta:
+    def __init__(self, usuario):
+            self.usuario= usuario
+            self.mensajes= ()
                         
                         
-                        def agregar_mensajes(self, mensaje):
-                            self.mensajes.append(mensaje)
-                            
-                            
-                            def obtener_mensajes(self):
-                                return self.mensajes
-#clase ServidorCorreo                            
+    def agregar_mensajes(self, mensaje):
+                self.mensajes.append(mensaje)
+                                            
+    def obtener_mensajes(self):
+                return self.mensajes
+        
+#clase ServidorCorreo                           
 class servidorCorreo:
     def __init__(self):
         #sirve para guardar usuarios en las carpetas
         self.usuarios= ()
         self.carpetas= ()
         
-        def registar_usuario(self, usuario):
+    def registar_usuario(self, usuario):
             #agrega un usuario al servidor y crea sus carpetas
             self.usuario(usuario.correo)== usuario
             self.carpetas(usuario.correo)== {
@@ -44,7 +44,7 @@ class servidorCorreo:
             "Enviados": ("Enviados")
                 }
             
-        def enviar_mensaje(self, mensaje):
+    def enviar_mensaje(self, mensaje):
             #guarda el mensaje en enviados del remitente y en inbox del destinatario
             
             #carpeta del remitente
@@ -65,4 +65,5 @@ class servidorCorreo:
                             
         
         
+
         
