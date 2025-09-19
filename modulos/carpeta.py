@@ -1,16 +1,16 @@
 #clase carpeta
-from correo_servidor import servidorCorreo
 
-class carpeta(servidorCorreo):
+
+class Carpeta():
         def __init__(self):
             self._mensajes = []
 
 
         def obtener_Mensajes(self):
-            return super().obtener_Mensajes()
+            pass
         
         def enviar_mensaje(self):
-            return super().enviar_mensaje()
+            pass
         
         def listar_mensajes(self,mensaje):
             pass

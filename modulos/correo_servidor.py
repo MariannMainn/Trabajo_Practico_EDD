@@ -1,5 +1,5 @@
 #clase ServidorCorreo representa la interfaz que usaran las demas clases                           
-class servidorCorreo:
+class ServidorCorreo:
         
     def enviar_mensaje(self):
         pass
