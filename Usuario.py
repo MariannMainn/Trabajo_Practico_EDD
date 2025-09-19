@@ -8,7 +8,7 @@ class usuario(servidorCorreo):
         self.__contraseña = contraseña
 
     def __str__(self):
-        return f"nombre {self._usuario} apellifo{self._apellido}"
+        return f"nombre {self._usuario} apellido{self._apellido}"
     
     def enviar_mensaje(self):
         return super().enviar_mensaje()
