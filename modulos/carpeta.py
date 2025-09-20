@@ -4,9 +4,6 @@ class Carpeta:
         self._nombre = nombre 
         self._mensajes = []
 #metodos
-    def obtenerMensajes(self):
-        return self._mensajes
-
     def guardarMensaje(self, texto):
         self._mensajes.append(texto)
 
