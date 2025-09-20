@@ -1,18 +1,15 @@
 #clase carpeta
+class Carpeta:
+    def __init__(self, nombre):
+        self._nombre = nombre 
+        self._mensajes = []
+#metodos
+    def obtenerMensajes(self):
+        return self._mensajes
 
+    def guardarMensaje(self, texto):
+        self._mensajes.append(texto)
 
-class Carpeta():
-        def __init__(self):
-            self._mensajes = []
-
-
-        def obtener_Mensajes(self):
-            pass
-        
-        def enviar_mensaje(self):
-            pass
-        
-        def listar_mensajes(self,mensaje):
-            pass
-
+    def agregarMensaje(self, texto):
+        self.guardarMensaje(texto)
 
