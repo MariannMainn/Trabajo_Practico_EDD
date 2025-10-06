@@ -1,11 +1,17 @@
 #clase mensaje
 class Mensaje:
         def __init__(self, texto, remitente, destinatario, asunto):
-                self._texto= ""
+                self._texto= texto
                 self._remitente= remitente
                 self._destinatario= destinatario
                 self._asunto= asunto
 
+        def __str__ (self):
+                asunto = "\nAsunto:"
+                remitente= "\nDe:"
+                texto = "\nmensaje: \n\t"
+                mensaje_format =remitente + self._remitente + asunto + self._asunto + texto +  self._texto
+                return  mensaje_format
         #Metodos 
         def obtener_texto(self):
                 return self._texto
