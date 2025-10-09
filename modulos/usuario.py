@@ -39,8 +39,8 @@ class Usuario(Persona):
         super().__init__(nombre,apellido,edad)
         self.correo = correo
         self.contrasenia = contrasenia
-        self.mensajes= []
-        self.contactos=[]
+        self.mensajes= Carpeta()
+        self.contactos= Carpeta()
 
 
     ## Metodos de Clase ##
@@ -73,10 +73,3 @@ class Usuario(Persona):
             for contacto in self.contactos:
                 return contacto
 
-if __name__ == "__main__":
-
-
-    persona1= Usuario("alexa@correoRandom.com",12345,"alexa","sanchez",24)
-    print(persona1)
-    print(persona1.mostrar_mensajes())
-    print(persona1.mostrar_contactos())

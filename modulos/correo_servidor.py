@@ -32,14 +32,16 @@ class Correo (Servidor):
 
 
             #Metodos de clase
-    def crear_usuario(self,nombre,apellido,edad,correo,contrasenia):
-        nuevo_Usuario = Usuario(correo,contrasenia,nombre,apellido,edad)
-        self.usuarios.append(nuevo_Usuario)
 
-    
+    #crear un nuevo Usuario y añadirlo a la lista de usuarios
+    def crear_usuario(self,nombre,apellido,edad,correo,contrasenia):
+        self.usuarios.append(nuevo_Usuario = Usuario(correo,contrasenia,nombre,apellido,edad))
+
+    #Elimina un usuario especifico de la lista
     def eliminar_usuario(self):
         return super().eliminar_usuario()
     
+    # Muestra una lista con todos los usuarios dentro de la lista /cambiar o eliminar metodo segun convenga
     def mostrar_usuario(self):
         if len(self.usuarios)== 0 :
             return False
@@ -49,35 +51,16 @@ class Correo (Servidor):
                 print("//")
         
 
+    #Permite el envio de mensajes a otros usuarios 
     def destinar_mensaje(self,mensaje,destinatario):
         for usuario in self.usuarios:
             if destinatario == usuario.correo:
                 usuario.mensajes.append(mensaje)
 
+    # Validacion de credenciales para acceder a los datos de usuario/como iniciar sesion o modificarlos
+    def validar_datos(self,correo,contrasenia):
+            pass
 
-    
-    
+    # Retorna los datos de usuario si el metodo VALIDAR es TRUE
     def sesion(self,correo,contrasenia):
-        if len(self.usuarios)== 0 :
-            return False
-        for usuario in self.usuarios:
-            if (correo == usuario.correo) and (contrasenia == usuario.contrasenia):
-                    return usuario
-
-
-if __name__ == "__main__":
-    correo = Correo()
-    correo.crear_usuario("alexa","sanchez",24,"alexa@correoRandom.com","12345")
-    correo.crear_usuario("rick","martinez",32,"RickMart@correoRandom.com","abc")
-    correo.mostrar_usuario()
-    print()
-    user=correo.sesion("alexa@correoRandom.com","12345")
-    print(user)
-    print("enviando mensaje")
-    correo.destinar_mensaje(user.enviar_mensaje("hola mi nombre es alexa y queria dejarte un mensaje",user.correo,"RickMart@correoRandom.com","saludo"),"RickMart@correoRandom.com")
-    print()
-    print("otro usuario recibiendo el mensaje")
-    user2=correo.sesion("RickMart@correoRandom.com","abc")
-    print(user2)
-    print(user2.mostrar_mensajes())
-
+            pass
