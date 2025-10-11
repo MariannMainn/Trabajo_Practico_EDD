@@ -102,7 +102,16 @@ class Carpeta:
     
     #elimina un mensaje del arbol
     def eliminar_mensaje(self,mensaje_obj):
-        pass
+        mensajes_nuevos_lista = self.mensajes_nuevos.inOrder()
+        mensajes_lista = self.mensajes.inOrder()
+        self.mensajes_nuevos = Arbol_Carpeta()
+        for msg in mensajes_nuevos_lista:
+            if msg != mensaje_obj:
+                self.mensajes_nuevos.insertar_dato(msg)
+        self.mensajes = Arbol_Carpeta()
+        for msg in mensajes_lista:
+            if msg._asunto != mensaje_obj._asunto: 
+                self.mensajes.insertar_dato(msg)
 
     #RETORNA LOS MENSAJES ALMACENADOS DENTRO DEL ARBOL EN FORMATO LISTA
     def listar_mensajes(self):
