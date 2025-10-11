@@ -6,13 +6,25 @@ class Mensaje:
                 self._destinatario= destinatario
                 self._asunto= asunto
 
+        #metodo Dunder de comparacion
+        def __lt__(self,dato):
+                return self._remitente < dato._remitente
+        def __eq__(self,dato):
+                return self._remitente == dato._remitente
+        def __gt__(self,dato):
+                return self._remitente > dato._remitente
+        
+        
+        #DEVUELVE UN STRING O CADENA CON LOS DATOS DEL MENSAJE
         def __str__ (self):
-                asunto = "\nAsunto:"
-                remitente= "\nDe:"
-                texto = "\nmensaje: \n\t"
-                mensaje_format =remitente + self._remitente + asunto + self._asunto + texto +  self._texto
+                asunto = "\nAsunto: "
+                remitente= "\tDe: "
+                texto = "\nmensaje: \n"
+                mensaje = "\t"
+                mensaje_format = asunto + self._asunto + remitente + self._remitente + texto + mensaje+mensaje +  self._texto
                 return  mensaje_format
-        #Metodos 
+        
+        # INTENTO DE SETTERS Y GETTERS
         def obtener_texto(self):
                 return self._texto
         def redactarTexto (self,nuevoMensaje):
@@ -32,3 +44,5 @@ class Mensaje:
                 return self._asunto
         def cambiarAsunto (self,nuevoAsunto):
                 self._asunto = nuevoAsunto
+
+        #METODOS?...

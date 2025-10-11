@@ -5,3 +5,9 @@ Informe de cambios y actualizaciones de codigo y errores (9/10/2025)
 · metodos nuevos en la clase carpeta.
 · Actualizacion de nombres de metodos y atributos de algunas clases.
 · actualizacion de varios metodos de clase a Pass por errores de sintaxis e implementacion.
+
+
+V1 11/10 
+·implementado la funcion de arboles para administrar la carpeta de mensajes y los usuarios almacenados en el ServidorCorreo
+· implementado la funcion de mandar mensajes de usuario a usuario 
+· implementada la busqueda de usuarios. 

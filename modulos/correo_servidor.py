@@ -1,4 +1,6 @@
 from usuario import *
+from carpeta import *
+from arbol_estructure import *
 
 
 # Interfaz del Servidor
@@ -7,60 +9,95 @@ class Servidor(ABC):
     def __init__(self):
         pass
 
+        #METODOS ABSTRACTOS DE CLASE
     @abstractmethod
-    def destinar_mensaje(self):
+    def enviar_mensaje(self):
         pass
-
     @abstractmethod
     def crear_usuario(self):
         pass
-
     @abstractmethod
     def mostrar_usuario(self):
         pass
-
     @abstractmethod
     def eliminar_usuario(self):
         pass
 
 
-############           CLASE SERVIDOR CORREO                ###############
+
+
+
+
+                ############           CLASE SERVIDOR CORREO                ###############
 class Correo (Servidor):
     def __init__(self):
         super().__init__()
-        self.usuarios = []
+        self.list_user= Arbol_Carpeta_users()
 
 
             #Metodos de clase
 
-    #crear un nuevo Usuario y añadirlo a la lista de usuarios
+    #CREA UN OBJETO DE TIPO USUARIO, CON LOS ARGUMENTOS REQUERIDOS Y LUEGO LO ALMACENA EN UNA LISTA(PROVISIONAL) PARA SU POSTERIOR USO.
     def crear_usuario(self,nombre,apellido,edad,correo,contrasenia):
-        self.usuarios.append(nuevo_Usuario = Usuario(correo,contrasenia,nombre,apellido,edad))
+        nuevo_Usuario = Usuario(correo,contrasenia,nombre,apellido,edad)
+        self.list_user.insertar_dato(nuevo_Usuario) 
 
-    #Elimina un usuario especifico de la lista
+    #ELIMINA UN ELEMENTO/USUARIO DE LA LISTA 
     def eliminar_usuario(self):
-        return super().eliminar_usuario()
+        pass
+
+    def buscar_usuario(self,dato):
+        return self.list_user.buscar_dato(dato)
+
     
-    # Muestra una lista con todos los usuarios dentro de la lista /cambiar o eliminar metodo segun convenga
+    #MUESTRA TODOS LOS ELEMENTOS ALMACENADOS EN LA LISTA CON UN CICLO FOR
     def mostrar_usuario(self):
-        if len(self.usuarios)== 0 :
-            return False
-        else:
-            for usuario in self.usuarios:
-                print(usuario.correo)
-                print("//")
+        dato =self.list_user.inOrder()
+        for datos in dato:
+            print(datos)
+    
         
 
-    #Permite el envio de mensajes a otros usuarios 
-    def destinar_mensaje(self,mensaje,destinatario):
-        for usuario in self.usuarios:
-            if destinatario == usuario.correo:
-                usuario.mensajes.append(mensaje)
+    #ENVIA UN OBJETO DE TIPO MENSAJE A LA CARPETA MENSAJES DEL USUARIO
+    def enviar_mensaje(self,mensaje,destinatario):
+            usuario = self.buscar_usuario(destinatario)
+            usuario.guardar_mensajes(mensaje)
 
-    # Validacion de credenciales para acceder a los datos de usuario/como iniciar sesion o modificarlos
-    def validar_datos(self,correo,contrasenia):
-            pass
 
-    # Retorna los datos de usuario si el metodo VALIDAR es TRUE
+    #METODO PARA VERIFICAR/VALIDAR CONTRASEÑAS Y USUARIOS
     def sesion(self,correo,contrasenia):
-            pass
+        pass
+
+
+
+
+
+#PRUEBAS DE CODIGO...
+if __name__ == "__main__":
+    correo = Correo()
+    #CREA DOS USUARIOS Y LOS GUARDA EN LA LISTA DE LA CLASE CORREO
+    correo.crear_usuario("alexa","sanchez",24,"alexa@correoRandom.com","12345")
+    correo.crear_usuario("rick","martinez",32,"RickMart@correoRandom.com","abc")
+    correo.crear_usuario("peter","gomez",12,"PitGomes@correoRandom.com","12345")
+    correo.crear_usuario("Daniel","alonso",32,"daniels@correoRandom.com","abc")
+
+    correo.mostrar_usuario()
+
+    print()
+    print("Busqueda de un usuario en la lista")
+    usuario =correo.buscar_usuario("RickMart@correoRandom.com")
+    print(usuario)
+    mensaje =usuario.crear_mensaje("hola me presento",usuario.correo,"daniels@correoRandom.com","saludo...")
+    correo.enviar_mensaje(mensaje,"daniels@correoRandom.com")
+    print()
+    print("otro usuario")
+    usuario2 =correo.buscar_usuario("daniels@correoRandom.com")
+    print(usuario2)
+    print("mensajes recibidos...")
+    print()
+    print(usuario2.mostrar_mensajes())
+
+
+
+
+    
